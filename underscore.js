@@ -240,6 +240,19 @@
     return low;
   };
 
+  // Group elements in the array under keys given by the iterator.
+  _.groupBy = function(array, iterator) {
+    var results = {};
+    each(array, function(value) {
+      var key = iterator(value);
+      if (results[key])
+        results[key].push(value);
+      else
+        results[key] = [value];
+    });
+    return results;
+  };
+
   // Convert anything iterable into a real, live array.
   _.toArray = function(iterable) {
     if (!iterable)                return [];
