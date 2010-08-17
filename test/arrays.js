@@ -105,4 +105,11 @@ $(document).ready(function() {
     equals(_.range(0, -10, -1).join(' '), '0 -1 -2 -3 -4 -5 -6 -7 -8 -9', 'final example in the Python docs');
   });
 
+  test("arrays: groupBy", function() {
+    var numbers = [1, 15, 3, 19, 12, 16, 4];
+    var result = _.groupBy(numbers, function(value) { return value > 9 ? 'high' : 'low' })
+    equals(result.high.join(' '), '15 19 12 16', 'can group elements by key given by iterator');
+    equals(result.low.join(' '), '1 3 4', 'can group elements by key given by iterator');
+  });
+
 });
